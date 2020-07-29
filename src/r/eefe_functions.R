@@ -1,3 +1,27 @@
+# Biolog
+TalPlot <- function(eigenvalues, cut){
+  sigma= eigenvalues
+  n = length(eigenvalues)
+  sigmak = log(c(1,sigma))
+  sigma = log(c(sigma,1))
+  st = sigmak-sigma
+  std = st[1:n+1]
+  pcs =c(1:(n))
+  df = data.frame(PC = pcs, Logk = std)
+  df = df[-n,]
+  ggline(df, x = "PC",y="Logk",color = "royalblue",xlab = "Principal Component", ylab = TeX("log $\\frac{\\sigma_k}{\\sigma_{k+1}}$")
+  ) + geom_vline(xintercept = cut,linetype="dotted", size =1)
+}
+
+# From somewhere else
+save_pheatmap_pdf <- function(x, filename, width=1200, height=1000, res = 150) {
+  pdf(filename)
+  grid::grid.newpage()
+  grid::grid.draw(x$gtable)
+  dev.off()
+}
+
+
 # Theme
 theme_xp <- function () { 
   theme_minimal(base_size=14, base_family="") %+replace%
