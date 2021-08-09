@@ -1,7 +1,7 @@
  #!/usr/bin/Rscript
 
 #####################################################################
-####      McFarland Calibration of the RTS instruments             ##
+####      Parametric Curves Fitting Comparison.                    ##
 #####################################################################
 
 #Input
